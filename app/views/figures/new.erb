@@ -1,0 +1,32 @@
+<h1>Figures / New</h1>
+<h2>Let's add some historical figures to the database!</h2>
+
+<form action="/figures" method="POST">
+<h3>Create a new figure.</h3>
+   Name: <input type="text" name="figure[name]" id="figure_name"><br>
+   <!-- name= sets value of key nested in figure hash; value of key = name
+   <input type="text" name="figure[title_ids][]" id="figure_title_ids"> <br>
+   <input type="text" name="figure[landmark_ids][]" id="figure_landmark_ids"><br> -->
+ <h3>Select or create a new landmark.</h3>
+   <h2>Existing Landmark:</h2>
+   <% @landmarks.each do |landmark| %>
+    <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%=landmark.id %>" value="<%=landmark.id %>">
+    <%=landmark.name%><br>
+    <% end %>
+   <br>
+   <h2>Create a New Landmark:</h2>
+   <h3>Name of Landmark: <input type="text" name="landmark[name]" id="new_landmark"> </h3><br>
+   <h3>Year Completed: <input type="text" name="landmark[year_completed]"> </h3><br>
+
+
+ <h3>Select or create a new title.</h3>
+   <h2>Existing Title:</h2>
+   <% @titles.each do |title| %>
+    <input type="checkbox" name="figure[title_ids][]" id="title_<%=title.id %>" value="<%=title.id %>">
+    <%=title.name%><br>
+    <% end %>
+   <br>
+   <h2>Create New Title: <input type="text" id="new_title" name="title[name]"> </h2><br>
+   
+   <input type="submit" value="Create New Figure"> 
+</form>
